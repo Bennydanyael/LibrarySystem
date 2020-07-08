@@ -11,9 +11,9 @@ namespace LibrarySystem.Controllers
 {
     public class PersonsController : Controller
     {
-        private readonly LibraryDBContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public PersonsController(LibraryDBContext context)
+        public PersonsController(ApplicationDbContext context)
         {
             _context = context;
         }

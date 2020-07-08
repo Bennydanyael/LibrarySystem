@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+    <UserSecretsId>a8a6d35a-d81e-4a2c-b4af-f5d45a0078f5</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -42,6 +43,12 @@
     <Compile Remove="Migrations\LibraryContext\20191114151248_InitialLibraryDBContext.Designer.cs" />
     <Compile Remove="Migrations\LibraryContext\20191114151624_InitialLibraryDBContext.cs" />
     <Compile Remove="Migrations\LibraryContext\20191114151624_InitialLibraryDBContext.Designer.cs" />
+    <Compile Remove="Migrations\LibraryContext\20191114151915_InitialLibraryDBContext.cs" />
+    <Compile Remove="Migrations\LibraryContext\20191114151915_InitialLibraryDBContext.Designer.cs" />
+    <Compile Remove="Migrations\LibraryContext\20191206073929_InitialLibraryDBContext.cs" />
+    <Compile Remove="Migrations\LibraryContext\20191206073929_InitialLibraryDBContext.Designer.cs" />
+    <Compile Remove="Migrations\LibraryContext\20191206074623_InitialLibraryDBContext.cs" />
+    <Compile Remove="Migrations\LibraryContext\20191206074623_InitialLibraryDBContext.Designer.cs" />
   </ItemGroup>
 
 

@@ -12,9 +12,9 @@ namespace LibrarySystem.Models
         {
         }
 
-        public DbSet<Authors> Authors { get; set; }
-        public DbSet<Books> Books { get; set; }
-        public DbSet<Persons> Persons { get; set; }
-        public DbSet<LibrarySystemRun> LibrarySystemRuns { get; set; }
+        //public DbSet<Authors> Authors { get; set; }
+        //public DbSet<Books> Books { get; set; }
+        //public DbSet<Persons> Persons { get; set; }
+        //public DbSet<LibrarySystemRun> LibrarySystemRuns { get; set; }
     }
 }

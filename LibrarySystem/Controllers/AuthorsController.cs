@@ -11,9 +11,9 @@ namespace LibrarySystem.Controllers
 {
     public class AuthorsController : Controller
     {
-        private readonly LibraryDBContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public AuthorsController(LibraryDBContext context)
+        public AuthorsController(ApplicationDbContext context)
         {
             _context = context;
         }
