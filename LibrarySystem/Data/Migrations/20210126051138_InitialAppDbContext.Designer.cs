@@ -7,17 +7,17 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace LibrarySystem.Migrations.LibraryContext
+namespace LibrarySystem.Data.Migrations
 {
-    [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20191206080217_InitialApplicationDBContext")]
-    partial class InitialApplicationDBContext
+    [DbContext(typeof(LibraryDBContext))]
+    [Migration("20210126051138_InitialAppDbContext")]
+    partial class InitialAppDbContext
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.2.6-servicing-10079")
+                .HasAnnotation("ProductVersion", "3.1.1")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -25,11 +25,14 @@ namespace LibrarySystem.Migrations.LibraryContext
                 {
                     b.Property<int>("AuthorsID")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("AuthorsName");
+                    b.Property<string>("AuthorsName")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Biography");
+                    b.Property<string>("Biography")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("AuthorsID");
 
@@ -40,15 +43,23 @@ namespace LibrarySystem.Migrations.LibraryContext
                 {
                     b.Property<int>("BooksID")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("AuthorsID");
+                    b.Property<int>("AuthorsID")
+                        .HasColumnType("int");
 
-                    b.Property<DateTime>("PublishDate");
+                    b.Property<int>("ISBN")
+                        .HasColumnType("int");
 
-                    b.Property<string>("PublishName");
+                    b.Property<DateTime>("PublishDate")
+                        .HasColumnType("datetime2");
 
-                    b.Property<string>("Title");
+                    b.Property<string>("PublishName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("BooksID");
 
@@ -60,39 +71,53 @@ namespace LibrarySystem.Migrations.LibraryContext
             modelBuilder.Entity("LibrarySystem.Models.IdentityDBContext", b =>
                 {
                     b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
+                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("AccessFailedCount");
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
 
                     b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken();
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
+                        .HasColumnType("nvarchar(256)")
                         .HasMaxLength(256);
 
-                    b.Property<bool>("EmailConfirmed");
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
 
-                    b.Property<bool>("LockoutEnabled");
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("bit");
 
-                    b.Property<DateTimeOffset?>("LockoutEnd");
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("datetimeoffset");
 
                     b.Property<string>("NormalizedEmail")
+                        .HasColumnType("nvarchar(256)")
                         .HasMaxLength(256);
 
                     b.Property<string>("NormalizedUserName")
+                        .HasColumnType("nvarchar(256)")
                         .HasMaxLength(256);
 
-                    b.Property<string>("PasswordHash");
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PhoneNumber");
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("PhoneNumberConfirmed");
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("bit");
 
-                    b.Property<string>("SecurityStamp");
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("TwoFactorEnabled");
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("bit");
 
                     b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(256)")
                         .HasMaxLength(256);
 
                     b.HasKey("Id");
@@ -112,19 +137,26 @@ namespace LibrarySystem.Migrations.LibraryContext
                 {
                     b.Property<int>("LibraryID")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("BooksID");
+                    b.Property<int>("BooksID")
+                        .HasColumnType("int");
 
-                    b.Property<DateTime>("BorrowedDate");
+                    b.Property<DateTime>("BorrowedDate")
+                        .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("DateBack");
+                    b.Property<DateTime>("DateBack")
+                        .HasColumnType("datetime2");
 
-                    b.Property<string>("Descriptions");
+                    b.Property<string>("Descriptions")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("LengthBorrowed");
+                    b.Property<int>("LengthBorrowed")
+                        .HasColumnType("int");
 
-                    b.Property<int>("PersonID");
+                    b.Property<int>("PersonID")
+                        .HasColumnType("int");
 
                     b.HasKey("LibraryID");
 
@@ -139,9 +171,11 @@ namespace LibrarySystem.Migrations.LibraryContext
                 {
                     b.Property<int>("MaritalID")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("MaritalsName");
+                    b.Property<string>("MaritalsName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("MaritalID");
 
@@ -152,24 +186,33 @@ namespace LibrarySystem.Migrations.LibraryContext
                 {
                     b.Property<int>("PersonID")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Address");
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("City");
+                    b.Property<string>("City")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Country");
+                    b.Property<string>("Country")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("MaritalID");
+                    b.Property<int>("MaritalID")
+                        .HasColumnType("int");
 
                     b.Property<string>("PersonName")
-                        .IsRequired();
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PhoneNumber");
+                    b.Property<int>("PhoneNumber")
+                        .HasColumnType("int");
 
-                    b.Property<int>("ReligionID");
+                    b.Property<int>("ReligionID")
+                        .HasColumnType("int");
 
-                    b.Property<int>("SexID");
+                    b.Property<int>("SexID")
+                        .HasColumnType("int");
 
                     b.HasKey("PersonID");
 
@@ -186,9 +229,11 @@ namespace LibrarySystem.Migrations.LibraryContext
                 {
                     b.Property<int>("ReligionID")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("ReligionName");
+                    b.Property<string>("ReligionName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ReligionID");
 
@@ -199,9 +244,11 @@ namespace LibrarySystem.Migrations.LibraryContext
                 {
                     b.Property<int>("SexID")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("SexName");
+                    b.Property<string>("SexName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("SexID");
 
@@ -211,15 +258,18 @@ namespace LibrarySystem.Migrations.LibraryContext
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken();
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
+                        .HasColumnType("nvarchar(256)")
                         .HasMaxLength(256);
 
                     b.Property<string>("NormalizedName")
+                        .HasColumnType("nvarchar(256)")
                         .HasMaxLength(256);
 
                     b.HasKey("Id");
@@ -236,14 +286,18 @@ namespace LibrarySystem.Migrations.LibraryContext
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("ClaimType");
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ClaimValue");
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("RoleId")
-                        .IsRequired();
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
@@ -256,14 +310,18 @@ namespace LibrarySystem.Migrations.LibraryContext
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("ClaimType");
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ClaimValue");
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
-                        .IsRequired();
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
@@ -274,14 +332,18 @@ namespace LibrarySystem.Migrations.LibraryContext
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.Property<string>("LoginProvider");
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("ProviderKey");
+                    b.Property<string>("ProviderKey")
+                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("ProviderDisplayName");
+                    b.Property<string>("ProviderDisplayName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
-                        .IsRequired();
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("LoginProvider", "ProviderKey");
 
@@ -292,9 +354,11 @@ namespace LibrarySystem.Migrations.LibraryContext
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
                 {
-                    b.Property<string>("UserId");
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("RoleId");
+                    b.Property<string>("RoleId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("UserId", "RoleId");
 
@@ -305,13 +369,17 @@ namespace LibrarySystem.Migrations.LibraryContext
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.Property<string>("UserId");
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("LoginProvider");
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("Value");
+                    b.Property<string>("Value")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("UserId", "LoginProvider", "Name");
 
@@ -323,7 +391,8 @@ namespace LibrarySystem.Migrations.LibraryContext
                     b.HasOne("LibrarySystem.Models.Authors", "Authories")
                         .WithMany()
                         .HasForeignKey("AuthorsID")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("LibrarySystem.Models.LibrarySystemRun", b =>
@@ -331,12 +400,14 @@ namespace LibrarySystem.Migrations.LibraryContext
                     b.HasOne("LibrarySystem.Models.Books", "Bookis")
                         .WithMany()
                         .HasForeignKey("BooksID")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("LibrarySystem.Models.Persons", "Persons")
                         .WithMany()
                         .HasForeignKey("PersonID")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("LibrarySystem.Models.Persons", b =>
@@ -344,62 +415,71 @@ namespace LibrarySystem.Migrations.LibraryContext
                     b.HasOne("LibrarySystem.Models.Maritals", "Maritals")
                         .WithMany()
                         .HasForeignKey("MaritalID")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("LibrarySystem.Models.Religions", "Religions")
                         .WithMany()
                         .HasForeignKey("ReligionID")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("LibrarySystem.Models.Sexs", "Sexs")
                         .WithMany()
                         .HasForeignKey("SexID")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole")
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("LibrarySystem.Models.IdentityDBContext")
+                    b.HasOne("LibrarySystem.Models.IdentityDBContext", null)
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("LibrarySystem.Models.IdentityDBContext")
+                    b.HasOne("LibrarySystem.Models.IdentityDBContext", null)
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole")
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.HasOne("LibrarySystem.Models.IdentityDBContext")
+                    b.HasOne("LibrarySystem.Models.IdentityDBContext", null)
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("LibrarySystem.Models.IdentityDBContext")
+                    b.HasOne("LibrarySystem.Models.IdentityDBContext", null)
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

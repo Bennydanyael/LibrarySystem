@@ -6,14 +6,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LibrarySystem.Models;
+using LibrarySystem.Data;
 
 namespace LibrarySystem.Controllers
 {
     public class LibrarySystemRunsController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly LibraryDBContext _context;
 
-        public LibrarySystemRunsController(ApplicationDbContext context)
+        public LibrarySystemRunsController(LibraryDBContext context)
         {
             _context = context;
         }

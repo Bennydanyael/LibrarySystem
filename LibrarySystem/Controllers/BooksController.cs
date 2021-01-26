@@ -6,14 +6,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LibrarySystem.Models;
+using LibrarySystem.Data;
 
 namespace LibrarySystem.Controllers
 {
     public class BooksController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly LibraryDBContext _context;
 
-        public BooksController(ApplicationDbContext context)
+        public BooksController(LibraryDBContext context)
         {
             _context = context;
         }
@@ -47,7 +48,7 @@ namespace LibrarySystem.Controllers
         // GET: Books/Create
         public IActionResult Create()
         {
-            ViewData["AuthorsID"] = new SelectList(_context.Authors, "AuthorsName", "AuthorsName");
+            ViewData["AuthorsID"] = new SelectList(_context.Authors, "AuthorsID", "AuthorsName");
             return View();
         }
 
@@ -64,7 +65,7 @@ namespace LibrarySystem.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["AuthorsID"] = new SelectList(_context.Authors, "AuthorsName", "AuthorsName", books.AuthorsID);
+            ViewData["AuthorsID"] = new SelectList(_context.Authors, "AuthorsID", "AuthorsID", books.AuthorsID);
             return View(books);
         }
 

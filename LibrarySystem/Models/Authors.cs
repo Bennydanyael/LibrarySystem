@@ -12,7 +12,9 @@ namespace LibrarySystem.Models
         [Key]
         [DatabaseGenerated(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity)]
         public int AuthorsID { get; set; }
+        [Display(Name ="Author")]
         public string AuthorsName { get; set; }
+        [Display(Name = "Biography")]
         public string Biography { get; set; }
 
         //[Required]

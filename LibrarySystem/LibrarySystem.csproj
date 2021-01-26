@@ -1,61 +1,27 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
     <UserSecretsId>a8a6d35a-d81e-4a2c-b4af-f5d45a0078f5</UserSecretsId>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Remove="Migrations\LibraryContext\20191114061835_InitialLibraryDBContext.cs" />
-    <Compile Remove="Migrations\LibraryContext\20191114061835_InitialLibraryDBContext.Designer.cs" />
-    <Compile Remove="Migrations\LibraryContext\20191114063156_InitialLibraryDBContext.cs" />
-    <Compile Remove="Migrations\LibraryContext\20191114063156_InitialLibraryDBContext.Designer.cs" />
-    <Compile Remove="Migrations\LibraryContext\20191114063806_InitialLibraryDBContext.cs" />
-    <Compile Remove="Migrations\LibraryContext\20191114063806_InitialLibraryDBContext.Designer.cs" />
-    <Compile Remove="Migrations\LibraryContext\20191114065113_InitialLibraryDBContext.cs" />
-    <Compile Remove="Migrations\LibraryContext\20191114065113_InitialLibraryDBContext.Designer.cs" />
-    <Compile Remove="Migrations\LibraryContext\20191114065215_InitialLibraryDBContext.cs" />
-    <Compile Remove="Migrations\LibraryContext\20191114065215_InitialLibraryDBContext.Designer.cs" />
-    <Compile Remove="Migrations\LibraryContext\20191114132148_InitialLibraryDBContext.cs" />
-    <Compile Remove="Migrations\LibraryContext\20191114132148_InitialLibraryDBContext.Designer.cs" />
-    <Compile Remove="Migrations\LibraryContext\20191114135457_InitialLibraryDBContext.cs" />
-    <Compile Remove="Migrations\LibraryContext\20191114135457_InitialLibraryDBContext.Designer.cs" />
-    <Compile Remove="Migrations\LibraryContext\20191114141023_InitialLibraryDBContext.cs" />
-    <Compile Remove="Migrations\LibraryContext\20191114141023_InitialLibraryDBContext.Designer.cs" />
-    <Compile Remove="Migrations\LibraryContext\20191114141201_InitialLibraryDBContext.cs" />
-    <Compile Remove="Migrations\LibraryContext\20191114141201_InitialLibraryDBContext.Designer.cs" />
-    <Compile Remove="Migrations\LibraryContext\20191114142542_InitialLibraryDBContext.cs" />
-    <Compile Remove="Migrations\LibraryContext\20191114142542_InitialLibraryDBContext.Designer.cs" />
-    <Compile Remove="Migrations\LibraryContext\20191114143627_InitialLibraryDBContext.cs" />
-    <Compile Remove="Migrations\LibraryContext\20191114143627_InitialLibraryDBContext.Designer.cs" />
-    <Compile Remove="Migrations\LibraryContext\20191114145458_InitialLibraryDBContext.cs" />
-    <Compile Remove="Migrations\LibraryContext\20191114145458_InitialLibraryDBContext.Designer.cs" />
-    <Compile Remove="Migrations\LibraryContext\20191114150115_InitialLibraryDBContext.cs" />
-    <Compile Remove="Migrations\LibraryContext\20191114150115_InitialLibraryDBContext.Designer.cs" />
-    <Compile Remove="Migrations\LibraryContext\20191114150351_InitialLibraryDBContext.cs" />
-    <Compile Remove="Migrations\LibraryContext\20191114150351_InitialLibraryDBContext.Designer.cs" />
-    <Compile Remove="Migrations\LibraryContext\20191114150833_InitialLibraryDBContext.cs" />
-    <Compile Remove="Migrations\LibraryContext\20191114150833_InitialLibraryDBContext.Designer.cs" />
-    <Compile Remove="Migrations\LibraryContext\20191114151040_InitialLibraryDBContext.cs" />
-    <Compile Remove="Migrations\LibraryContext\20191114151040_InitialLibraryDBContext.Designer.cs" />
-    <Compile Remove="Migrations\LibraryContext\20191114151248_InitialLibraryDBContext.cs" />
-    <Compile Remove="Migrations\LibraryContext\20191114151248_InitialLibraryDBContext.Designer.cs" />
-    <Compile Remove="Migrations\LibraryContext\20191114151624_InitialLibraryDBContext.cs" />
-    <Compile Remove="Migrations\LibraryContext\20191114151624_InitialLibraryDBContext.Designer.cs" />
-    <Compile Remove="Migrations\LibraryContext\20191114151915_InitialLibraryDBContext.cs" />
-    <Compile Remove="Migrations\LibraryContext\20191114151915_InitialLibraryDBContext.Designer.cs" />
-    <Compile Remove="Migrations\LibraryContext\20191206073929_InitialLibraryDBContext.cs" />
-    <Compile Remove="Migrations\LibraryContext\20191206073929_InitialLibraryDBContext.Designer.cs" />
-    <Compile Remove="Migrations\LibraryContext\20191206074623_InitialLibraryDBContext.cs" />
-    <Compile Remove="Migrations\LibraryContext\20191206074623_InitialLibraryDBContext.Designer.cs" />
-  </ItemGroup>
-
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.App" />
-    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.1" />
   </ItemGroup>
 
 </Project>

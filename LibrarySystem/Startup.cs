@@ -16,6 +16,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Hosting;
 
 namespace LibrarySystem
 {
@@ -35,29 +36,29 @@ namespace LibrarySystem
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
                 options.CheckConsentNeeded = context => true;
-                options.MinimumSameSitePolicy = SameSiteMode.None;
+                options.MinimumSameSitePolicy = SameSiteMode.Strict;
             });
 
             //Service Library Context
-            //services.AddDbContext<LibraryDBContext>(_options => _options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDbContext<ApplicationDbContext>(_options => _options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<LibraryDBContext>(_options => _options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            //services.AddDbContext<ApplicationDbContext>(_options => _options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             //Service Identity User
-            services.AddIdentity<IdentityDBContext, IdentityRole>().AddDefaultUI(UIFramework.Bootstrap4).AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
+            services.AddIdentity<IdentityDBContext, IdentityRole>().AddDefaultUI().AddEntityFrameworkStores<LibraryDBContext>().AddDefaultTokenProviders();
 
-            services.AddAuthentication().AddGoogle(_googleOptions =>
-            {
-                _googleOptions.ClientId = Configuration["AuthenticationGoogleClientId"];
-                _googleOptions.ClientSecret = Configuration["AuthenticationGoogleClientSecret"];
-            });
+            //services.AddAuthentication().AddGoogle(_googleOptions =>
+            //{
+            //    _googleOptions.ClientId = Configuration["AuthenticationGoogleClientId"];
+            //    _googleOptions.ClientSecret = Configuration["AuthenticationGoogleClientSecret"];
+            //});
 
-            //services.AddTransient<IEmailSender, IEmailSender>();
+            //services.AddTransient<IEmailSender, EmailSender>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Latest);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -70,24 +71,18 @@ namespace LibrarySystem
                 app.UseHsts();
             }
 
+            app.UseRouting();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
             app.UseAuthentication();
 
-            app.UseMvc(routes =>
+            app.UseEndpoints(endpoints =>
             {
-                routes.MapRoute(
+                endpoints.MapControllerRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
-
-                routes.MapRoute(
-                    name: "Login",
-                    template: "{controller=Account}/{action=Index}/{id?}");
-
-                routes.MapRoute(
-                    name: "Logout",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
             });
         }
     }

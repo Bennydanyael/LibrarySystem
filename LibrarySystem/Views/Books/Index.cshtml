@@ -1,19 +1,19 @@
 ﻿@model IEnumerable<LibrarySystem.Models.Books>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Book";
 }
-
-<h1>Books</h1>
-
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">New Book</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ISBN)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Authories)
@@ -32,6 +32,9 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ISBN)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Authories.AuthorsName)

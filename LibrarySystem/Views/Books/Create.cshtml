@@ -18,8 +18,13 @@
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="ISBN" class="control-label"></label>
+                <input asp-for="ISBN" class="form-control" />
+                <span asp-validation-for="ISBN" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="AuthorsID" class="control-label"></label>
-                <select asp-for="AuthorsID" class ="form-control" asp-items="ViewBag.AuthorsID"></select>
+                <select asp-for="AuthorsID" class="form-control" asp-items="ViewBag.AuthorsID"></select>
             </div>
             <div class="form-group">
                 <label asp-for="PublishDate" class="control-label"></label>

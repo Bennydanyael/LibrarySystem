@@ -1,10 +1,9 @@
 ﻿using System;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace LibrarySystem.Migrations.LibraryContext
+namespace LibrarySystem.Data.Migrations
 {
-    public partial class InitialApplicationDBContext : Migration
+    public partial class InitialAppDbContext : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -52,7 +51,7 @@ namespace LibrarySystem.Migrations.LibraryContext
                 columns: table => new
                 {
                     AuthorsID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     AuthorsName = table.Column<string>(nullable: true),
                     Biography = table.Column<string>(nullable: true)
                 },
@@ -66,7 +65,7 @@ namespace LibrarySystem.Migrations.LibraryContext
                 columns: table => new
                 {
                     MaritalID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     MaritalsName = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -79,7 +78,7 @@ namespace LibrarySystem.Migrations.LibraryContext
                 columns: table => new
                 {
                     ReligionID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     ReligionName = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -92,7 +91,7 @@ namespace LibrarySystem.Migrations.LibraryContext
                 columns: table => new
                 {
                     SexID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     SexName = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -105,7 +104,7 @@ namespace LibrarySystem.Migrations.LibraryContext
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     RoleId = table.Column<string>(nullable: false),
                     ClaimType = table.Column<string>(nullable: true),
                     ClaimValue = table.Column<string>(nullable: true)
@@ -126,7 +125,7 @@ namespace LibrarySystem.Migrations.LibraryContext
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     UserId = table.Column<string>(nullable: false),
                     ClaimType = table.Column<string>(nullable: true),
                     ClaimValue = table.Column<string>(nullable: true)
@@ -211,7 +210,8 @@ namespace LibrarySystem.Migrations.LibraryContext
                 columns: table => new
                 {
                     BooksID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ISBN = table.Column<int>(nullable: false),
                     Title = table.Column<string>(nullable: true),
                     AuthorsID = table.Column<int>(nullable: false),
                     PublishDate = table.Column<DateTime>(nullable: false),
@@ -233,7 +233,7 @@ namespace LibrarySystem.Migrations.LibraryContext
                 columns: table => new
                 {
                     PersonID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     PersonName = table.Column<string>(nullable: false),
                     SexID = table.Column<int>(nullable: false),
                     MaritalID = table.Column<int>(nullable: false),
@@ -271,7 +271,7 @@ namespace LibrarySystem.Migrations.LibraryContext
                 columns: table => new
                 {
                     LibraryID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     PersonID = table.Column<int>(nullable: false),
                     BooksID = table.Column<int>(nullable: false),
                     BorrowedDate = table.Column<DateTime>(nullable: false),

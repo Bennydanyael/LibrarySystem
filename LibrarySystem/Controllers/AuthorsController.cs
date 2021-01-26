@@ -6,14 +6,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LibrarySystem.Models;
+using LibrarySystem.Data;
 
 namespace LibrarySystem.Controllers
 {
     public class AuthorsController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly LibraryDBContext _context;
 
-        public AuthorsController(ApplicationDbContext context)
+        public AuthorsController(LibraryDBContext context)
         {
             _context = context;
         }
