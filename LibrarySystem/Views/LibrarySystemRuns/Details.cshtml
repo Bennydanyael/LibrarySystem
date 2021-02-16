@@ -1,0 +1,66 @@
+﻿@model LibrarySystem.Models.LibrarySystemRun
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>LibrarySystemRun</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Persons)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Persons.PersonName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Bookis)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Bookis.Title)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Bookis.PublishDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Bookis.PublishDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Bookis.PublishName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Bookis.PublishName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.BorrowedDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.BorrowedDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DateBack)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DateBack)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LengthBorrowed)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LengthBorrowed)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Descriptions)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Descriptions)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.LibraryID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

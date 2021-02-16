@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Library.App.Mobile.Views.BookDetailPage"
+             Title="{Binding Title}">
+    <ContentPage.Content>
+        <StackLayout Spacing="20" Padding="15">
+            <Label Text="Titles:" FontSize="Medium" />
+            <Label Text="{Binding Titles}" FontSize="Small"/>
+            <Label Text="ISBN:" FontSize="Medium" />
+            <Label Text="{Binding ISBN}" FontSize="Small"/>
+            <Label Text="Author:" FontSize="Medium" />
+            <Label Text="{Binding Author}" FontSize="Small"/>
+            <Label Text="PublishDate:" FontSize="Medium" />
+            <Label Text="{Binding PublishDate}" FontSize="Small"/>
+            <Label Text="PublishName:" FontSize="Medium" />
+            <Label Text="{Binding PublishName}" FontSize="Small"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
+    
